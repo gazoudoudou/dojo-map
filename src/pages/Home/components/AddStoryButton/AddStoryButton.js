@@ -2,21 +2,23 @@
 
 import React, { PureComponent } from 'react';
 import { StyleSheet } from 'react-native';
+import { withNavigation, NavigationScreenProps } from 'react-navigation';
 import { TouchableOpacity, Icon } from '../../../../components';
 
 import theme from '../../../../theme';
 
 type PropsType = {
-  onPress: Function,
   style?: any,
-};
+} & NavigationScreenProps;
 
-class GoToMyLocationButton extends PureComponent<PropsType> {
+class AddStoryButton extends PureComponent<PropsType> {
+  _navigateToChooseAddress = () => this.props.navigation.navigate('ChooseAddress');
+
   render() {
-    const { onPress, style } = this.props;
+    const { style } = this.props;
     return (
-      <TouchableOpacity activeOpacity={0.7} onPress={onPress} style={[styles.container, style]}>
-        <Icon name="my-location" color={theme.colors.lightGrey} size={20} />
+      <TouchableOpacity activeOpacity={0.7} onPress={this._navigateToChooseAddress} style={[styles.container, style]}>
+        <Icon name="plus" color={theme.colors.lightGrey} size={20} />
       </TouchableOpacity>
     );
   }
@@ -32,10 +34,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     elevation: 4,
     shadowColor: 'black',
-    shadowOffset: { width: 1, height: 1 },
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
     shadowRadius: 2,
     shadowOpacity: 0.6,
   },
 });
 
-export default GoToMyLocationButton;
+export default withNavigation(AddStoryButton);
