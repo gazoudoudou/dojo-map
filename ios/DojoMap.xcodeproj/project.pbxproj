@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -40,6 +39,10 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* DojoMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DojoMapTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+		333598AA220F3AEA0056EBD1 /* libRNGeocoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333598A9220F3AD00056EBD1 /* libRNGeocoder.a */; };
+		3381AED6220F404B00A82F29 /* NunitoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3381AEAD220F404A00A82F29 /* NunitoSans-Regular.ttf */; };
+		3381AED7220F404B00A82F29 /* NunitoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3381AED4220F404A00A82F29 /* NunitoSans-Bold.ttf */; };
+		3381AED8220F404B00A82F29 /* NunitoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3381AED5220F404B00A82F29 /* NunitoSans-SemiBold.ttf */; };
 		33A1C2EA220F27C9002AE572 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CBDE9C220F243000A55E52 /* icomoon.ttf */; };
 		44F1168BCA4A4AA2A782A63A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBC502E349CC451B8D4230FF /* FontAwesome.ttf */; };
 		45A536CE277C4F67B52D7C29 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4175B5DAD054674B62FB581 /* Feather.ttf */; };
@@ -57,6 +60,9 @@
 		E82561C335F344A2AFF8E5F8 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77EF19E3AC5444C39F3660D1 /* FontAwesome5_Regular.ttf */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
+		E1529711C691439CB5B58F0D /* NunitoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DF6D368A754056B5C4B5A8 /* NunitoSans-Bold.ttf */; };
+		ED8A824AE7134973BF5325DB /* NunitoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C1DB83D255402CB0163521 /* NunitoSans-Regular.ttf */; };
+		1C0C17D3BB824826B9FD9E5C /* NunitoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEB17F8AF122418E81218CDB /* NunitoSans-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +198,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3D383D621EBD27B9005632C8;
 			remoteInfo = "double-conversion-tvOS";
+		};
+		333598A8220F3AD00056EBD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3335987F220F3AD00056EBD1 /* RNGeocoder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BF8FCF941BFFB184000FCD37;
+			remoteInfo = RNGeocoder;
 		};
 		33CBDEC2220F243000A55E52 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -360,6 +373,10 @@
 		2D02E4901E0B4A5D006451C7 /* DojoMap-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DojoMap-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		33269D3C68FB43E8BDAE2400 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		3335987F220F3AD00056EBD1 /* RNGeocoder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNGeocoder.xcodeproj; path = "../node_modules/react-native-geocoder/ios/RNGeocoder.xcodeproj"; sourceTree = "<group>"; };
+		3381AEAD220F404A00A82F29 /* NunitoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NunitoSans-Regular.ttf"; path = "../../../WWF/wag-app/resources/fonts/NunitoSans-Regular.ttf"; sourceTree = "<group>"; };
+		3381AED4220F404A00A82F29 /* NunitoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NunitoSans-Bold.ttf"; path = "../../../WWF/wag-app/resources/fonts/NunitoSans-Bold.ttf"; sourceTree = "<group>"; };
+		3381AED5220F404B00A82F29 /* NunitoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NunitoSans-SemiBold.ttf"; path = "../../../WWF/wag-app/resources/fonts/NunitoSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		33CBDE9C220F243000A55E52 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = icomoon.ttf; path = ../resources/icons/icomoon.ttf; sourceTree = "<group>"; };
 		390A00FB7582435CB279620E /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -383,6 +400,9 @@
 		DE5B9DBC870640F196451E0F /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		30DF6D368A754056B5C4B5A8 /* NunitoSans-Bold.ttf */ = {isa = PBXFileReference; name = "NunitoSans-Bold.ttf"; path = "../resources/fonts/NunitoSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		77C1DB83D255402CB0163521 /* NunitoSans-Regular.ttf */ = {isa = PBXFileReference; name = "NunitoSans-Regular.ttf"; path = "../resources/fonts/NunitoSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CEB17F8AF122418E81218CDB /* NunitoSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "NunitoSans-SemiBold.ttf"; path = "../resources/fonts/NunitoSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +418,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333598AA220F3AEA0056EBD1 /* libRNGeocoder.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -569,6 +590,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		33359880220F3AD00056EBD1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				333598A9220F3AD00056EBD1 /* libRNGeocoder.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +628,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3335987F220F3AD00056EBD1 /* RNGeocoder.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -663,6 +693,9 @@
 		BC0A4D2262274E8F89243221 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3381AED4220F404A00A82F29 /* NunitoSans-Bold.ttf */,
+				3381AEAD220F404A00A82F29 /* NunitoSans-Regular.ttf */,
+				3381AED5220F404B00A82F29 /* NunitoSans-SemiBold.ttf */,
 				CD964A383E0648F5A542D649 /* AntDesign.ttf */,
 				33CBDE9C220F243000A55E52 /* icomoon.ttf */,
 				91151E27976E4875A1CE837B /* Entypo.ttf */,
@@ -679,6 +712,9 @@
 				33269D3C68FB43E8BDAE2400 /* Octicons.ttf */,
 				AE92E2FFDAA24378AC5CD50F /* SimpleLineIcons.ttf */,
 				660F95FC038B489CA4E55AF2 /* Zocial.ttf */,
+				30DF6D368A754056B5C4B5A8 /* NunitoSans-Bold.ttf */,
+				77C1DB83D255402CB0163521 /* NunitoSans-Regular.ttf */,
+				CEB17F8AF122418E81218CDB /* NunitoSans-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -843,6 +879,10 @@
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
+				{
+					ProductGroup = 33359880220F3AD00056EBD1 /* Products */;
+					ProjectRef = 3335987F220F3AD00056EBD1 /* RNGeocoder.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -972,6 +1012,13 @@
 			fileType = archive.ar;
 			path = "libdouble-conversion.a";
 			remoteRef = 2DF0FFE82056DD460020B375 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		333598A9220F3AD00056EBD1 /* libRNGeocoder.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNGeocoder.a;
+			remoteRef = 333598A8220F3AD00056EBD1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		33CBDEC3220F243000A55E52 /* libjsi.a */ = {
@@ -1131,8 +1178,10 @@
 				33A1C2EA220F27C9002AE572 /* icomoon.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				3381AED7220F404B00A82F29 /* NunitoSans-Bold.ttf in Resources */,
 				BA72674950B7456CB3ADD498 /* AntDesign.ttf in Resources */,
 				10DD569A4BB347FDAAEE2A41 /* Entypo.ttf in Resources */,
+				3381AED8220F404B00A82F29 /* NunitoSans-SemiBold.ttf in Resources */,
 				893DDAEEE57848C8A186FAA5 /* EvilIcons.ttf in Resources */,
 				45A536CE277C4F67B52D7C29 /* Feather.ttf in Resources */,
 				44F1168BCA4A4AA2A782A63A /* FontAwesome.ttf in Resources */,
@@ -1141,11 +1190,15 @@
 				11CA691D1C4646AE9BF6059D /* FontAwesome5_Solid.ttf in Resources */,
 				7564958594364AF7866E8A4F /* Foundation.ttf in Resources */,
 				81CF6E88ACCE4F23ABBAF08D /* Ionicons.ttf in Resources */,
+				3381AED6220F404B00A82F29 /* NunitoSans-Regular.ttf in Resources */,
 				036E4F4EC1DB4DD1AE4B20E0 /* MaterialCommunityIcons.ttf in Resources */,
 				02DB16FE8B9C451AA1EEEB88 /* MaterialIcons.ttf in Resources */,
 				B9A6B63603E244A88EED47E2 /* Octicons.ttf in Resources */,
 				9D554DB7941945FEB03CED84 /* SimpleLineIcons.ttf in Resources */,
 				63FE550135AD43208C0D2700 /* Zocial.ttf in Resources */,
+				E1529711C691439CB5B58F0D /* NunitoSans-Bold.ttf in Resources */,
+				ED8A824AE7134973BF5325DB /* NunitoSans-Regular.ttf in Resources */,
+				1C0C17D3BB824826B9FD9E5C /* NunitoSans-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
