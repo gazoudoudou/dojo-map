@@ -1,4 +1,5 @@
 // @flow
+
 import React, { PureComponent } from 'react';
 import SnackBar from '@bam.tech/react-native-snackbar-dialog';
 import { StyleSheet, TouchableOpacity } from 'react-native';

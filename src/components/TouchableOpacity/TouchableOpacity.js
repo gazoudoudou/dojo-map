@@ -1,4 +1,5 @@
 // @flow
+
 import React, { PureComponent } from 'react';
 import { TouchableOpacity as RNTouchableOpacity } from 'react-native';
 

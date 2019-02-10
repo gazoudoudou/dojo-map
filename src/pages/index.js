@@ -1,4 +1,4 @@
 // @flow
 
-export { Home } from './Home';
 export { ChooseAddress } from './ChooseAddress';
+export { Home } from './Home';

@@ -1,4 +1,5 @@
 // @flow
+
 import React from 'react';
 import SnackBar from '@bam.tech/react-native-snackbar-dialog';
 import { Platform } from 'react-native';
