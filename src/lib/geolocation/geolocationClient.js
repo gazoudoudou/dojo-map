@@ -2,6 +2,6 @@
 
 import NativeGeocoder from 'react-native-geocoder';
 
-NativeGeocoder.fallbackToGoogle('AIzaSyCLG1jz9pmTig0z6k0txNwRTMR93mxdvN8');
+NativeGeocoder.fallbackToGoogle('AIzaSyD5x87DVjmuHPT9bZaPDbcF2R9ywX65rIE');
 
 export default NativeGeocoder;

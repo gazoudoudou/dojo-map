@@ -9,17 +9,22 @@ export const findAddressesFromSearch = (address: string): Promise<any> => {
     .geocodeAddress(address)
     .then(geocoderResults => {
       if (geocoderResults) {
-        const results = geocoderResults.length && geocoderResults.filter(res => res.countryCode === 'FR');
+        const results =
+          geocoderResults.length &&
+          geocoderResults.filter(
+            ({ countryCode, formattedAddress, position }) => countryCode === 'FR' && formattedAddress && position
+          );
         if (!results || !results.length) throw new Error('ZERO_RESULTS');
-        return results;
+        return results.map(({ formattedAddress, position }) => ({
+          address: formattedAddress,
+          location: { latitude: position.lat, longitude: position.lng },
+        }));
       } else {
         throw new Error(`Error while geocoding ${address}. Query result was ` + JSON.stringify(geocoderResults));
       }
     })
     .catch(error => {
-      if (error.message.includes('ZERO_RESULTS')) {
-        ToastService.showError(I18n.t('ChooseAddress.no_result_found'));
-      } else {
+      if (!error.message.includes('ZERO_RESULTS')) {
         console.warn(error);
         ToastService.showError(I18n.t('ChooseAddress.error'));
       }

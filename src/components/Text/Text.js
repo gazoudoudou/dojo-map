@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react';
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 import BAMText from '@bam.tech/react-native-component-text';
 import { scaleTypo } from '../../lib/scaleTypo';
 
@@ -26,7 +26,7 @@ export const getFontStyle = (
   }
 
   const typo = { fontSize, lineHeight };
-  const scaledTypo = Platform.OS === 'web' || !scaled ? typo : scaleTypo(typo);
+  const scaledTypo = !scaled ? typo : scaleTypo(typo);
 
   return {
     fontFamily,

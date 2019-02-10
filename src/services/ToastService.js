@@ -2,7 +2,6 @@
 
 import React from 'react';
 import SnackBar from '@bam.tech/react-native-snackbar-dialog';
-import { Platform } from 'react-native';
 import ToastComponent from '../components/Toast';
 
 export default class ToastService {
@@ -14,7 +13,6 @@ export default class ToastService {
   ) {
     SnackBar.show(message, {
       renderContent: () => <ToastComponent message={message} error={error} colors={colors} onPress={onPress} />,
-      style: Platform.OS === 'web' ? { width: '100%' } : {},
     });
   }
   static showMessage(message: string, colors?: { backgroundColor?: string, textColor?: string }) {
