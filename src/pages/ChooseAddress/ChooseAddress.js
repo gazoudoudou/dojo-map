@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from 'react';
 import { StyleSheet, View, FlatList, ActivityIndicator } from 'react-native';
+import { NavigationScreenProps } from 'react-navigation';
 import { debounce } from 'lodash';
 import { AddressLine } from './components';
 import I18n from '../../lib/I18n';
@@ -9,7 +10,7 @@ import { TextInput, Text } from '../../components';
 import { findAddressesFromSearch } from '../../lib/geolocation';
 import theme from '../../theme';
 
-type PropsType = {};
+type PropsType = {} & NavigationScreenProps;
 
 type StateType = {
   foundAddresses: {

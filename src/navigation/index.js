@@ -5,33 +5,25 @@ import { createStackNavigator } from 'react-navigation';
 import { BackButton } from '../components';
 import * as Pages from '../pages';
 
-const AddStoryNavigator = createStackNavigator(
-  {
-    ChooseAddress: {
-      screen: Pages.ChooseAddress,
-    },
-  },
-  {
-    initialRouteName: 'ChooseAddress',
-    navigationOptions: {
-      headerLeft: BackButton,
-    },
-  }
-);
-
 const RootNavigator = createStackNavigator(
   {
     Home: {
       screen: Pages.Home,
+      navigationOptions: {
+        header: null,
+      },
     },
-    AddStory: {
-      screen: AddStoryNavigator,
+    ChooseAddress: {
+      screen: Pages.ChooseAddress,
+    },
+    WriteStory: {
+      screen: Pages.WriteStory,
     },
   },
   {
     initialRouteName: 'Home',
     navigationOptions: {
-      header: null,
+      headerLeft: BackButton,
     },
   }
 );

@@ -3,5 +3,9 @@
     "search_input_placeholder": "Rechercher une adresse",
     "no_result_found": "Aucun résultat trouvé",
     "error": "Une erreur est survenue"
+  },
+  "WriteStory": {
+    "nickname": "Choisir un pseudo",
+    "write_story": "Ecrire une histoire"
   }
 }

@@ -2,10 +2,11 @@
 
 import React, { PureComponent } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { NavigationScreenProps } from 'react-navigation';
 import { GoToMyLocationButton, AddStoryButton, MapView } from './components';
 import theme from '../../theme';
 
-type PropsType = {};
+type PropsType = {} & NavigationScreenProps;
 
 class Home extends PureComponent<PropsType> {
   render() {

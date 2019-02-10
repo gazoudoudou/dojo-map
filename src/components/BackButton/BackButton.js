@@ -27,7 +27,7 @@ class BackButton extends PureComponent<PropsType> {
 const styles = StyleSheet.create({
   backIcon: {
     padding: 2 * theme.margin,
-    color: theme.colors.white,
+    color: theme.colors.blueberry,
   },
 });
 

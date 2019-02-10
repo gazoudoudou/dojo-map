@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from 'react';
 import { StyleSheet } from 'react-native';
+import { NavigationScreenProps, withNavigation } from 'react-navigation';
 import theme from '../../../../theme';
 import { TouchableOpacity, Text } from '../../../../components';
 
@@ -10,10 +11,10 @@ type PropsType = {
     address: string,
     location: { latitude: number, longitude: number },
   },
-};
+} & NavigationScreenProps;
 
 class AddressLine extends PureComponent<PropsType> {
-  _onPress = () => {};
+  _onPress = () => this.props.navigation.navigate('WriteStory', { location: this.props.foundAddress.location });
 
   render() {
     return (
@@ -30,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddressLine;
+export default withNavigation(AddressLine);
