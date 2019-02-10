@@ -1,5 +1,7 @@
 // @flow
 
+import mapMarkerEmpty from './images/mapMarkerEmpty/mapMarkerEmpty.png';
+
 const colors = {
   darkGrey: '#333333',
   deepGrey: '#6B6C6D',
@@ -35,5 +37,8 @@ export default {
   messageToast: {
     text: colors.veryLightGrey,
     background: colors.editBlue,
+  },
+  images: {
+    mapMarkerEmpty,
   },
 };
