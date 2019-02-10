@@ -6,6 +6,7 @@
   },
   "WriteStory": {
     "nickname": "Choisir un pseudo",
-    "write_story": "Ecrire une histoire"
+    "write_story": "Ecrire une histoire",
+    "submit": "Soumettre"
   }
 }

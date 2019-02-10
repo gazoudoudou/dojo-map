@@ -2,11 +2,12 @@
 
 import React, { PureComponent } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { TextInput } from '../../components';
+import { StackActions, NavigationActions, NavigationScreenProps } from 'react-navigation';
+import { TextInput, TouchableOpacity, Text } from '../../components';
 import I18n from '../../lib/I18n';
 import theme from '../../theme';
 
-type PropsType = {};
+type PropsType = {} & NavigationScreenProps;
 
 type StateType = {
   nickname: string,
@@ -22,6 +23,18 @@ class WriteStory extends PureComponent<PropsType, StateType> {
   _onChangeNickname = (nickname: string) => this.setState({ nickname });
 
   _onChangeStory = (story: string) => this.setState({ story });
+
+  _submitStory = () => {
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: 'Home',
+        }),
+      ],
+    });
+    this.props.navigation.dispatch(resetAction);
+  };
 
   render() {
     return (
@@ -39,6 +52,9 @@ class WriteStory extends PureComponent<PropsType, StateType> {
           containerStyle={styles.storyContainer}
           multiline
         />
+        <TouchableOpacity onPress={this._submitStory}>
+          <Text>{I18n.t('WriteStory.submit')}</Text>
+        </TouchableOpacity>
       </View>
     );
   }
