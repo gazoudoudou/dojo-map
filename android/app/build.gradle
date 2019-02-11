@@ -134,6 +134,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-android-location-services-dialog-box')
+    implementation project(':react-native-geolocation-service')
     implementation project(':react-native-fast-image')
     implementation project(':react-native-i18n')
     implementation project(':react-native-geocoder')

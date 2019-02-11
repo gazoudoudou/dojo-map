@@ -1,4 +1,8 @@
 rootProject.name = 'DojoMap'
+include ':react-native-android-location-services-dialog-box'
+project(':react-native-android-location-services-dialog-box').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-android-location-services-dialog-box/android')
+include ':react-native-geolocation-service'
+project(':react-native-geolocation-service').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-geolocation-service/android')
 include ':react-native-fast-image'
 project(':react-native-fast-image').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fast-image/android')
 include ':react-native-i18n'

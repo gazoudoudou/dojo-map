@@ -2,8 +2,10 @@ package com.dojomap;
 
 import android.app.Application;
 
+import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 import com.facebook.react.ReactApplication;
+import com.showlocationservicesdialogbox.LocationServicesDialogBoxPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -27,9 +29,11 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
+          new RNFusedLocationPackage(),
           new MainReactPackage(),
-            new FastImageViewPackage(),
-            new RNI18nPackage(),
+            new LocationServicesDialogBoxPackage(),
+          new FastImageViewPackage(),
+          new RNI18nPackage(),
           new RNGeocoderPackage(),
           new VectorIconsPackage(),
           new MapsPackage()

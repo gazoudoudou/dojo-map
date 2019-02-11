@@ -8,5 +8,9 @@
     "nickname": "Choisir un pseudo",
     "write_story": "Ecrire une histoire",
     "submit": "Soumettre"
+  },
+  "Home": {
+    "ok": "OK",
+    "activate_geoloc_in_settings": "Cette fonctionnalité n'est disponible qu'en activant la géolocalisation dans les préférences de l'appareil."
   }
 }

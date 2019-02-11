@@ -25,6 +25,7 @@ type PropsType = {
   style?: any,
   storyObjects: StoryType[],
   renderMarker: Function,
+  setRef: Function,
 };
 
 type StateType = {
@@ -52,6 +53,7 @@ class MapView extends PureComponent<PropsType, StateType> {
 
   _setRef = ref => {
     this.map = ref;
+    this.props.setRef(ref);
   };
 
   _createClusters = () => {
