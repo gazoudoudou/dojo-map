@@ -6,7 +6,7 @@ import { Text, Image } from '../../../../components';
 import theme from '../../../../theme';
 
 type PropsType = {
-  storyObject: StoryType,
+  storyObject: StoryObjectType,
   onPress: Function,
   showNickname?: ?boolean,
 };

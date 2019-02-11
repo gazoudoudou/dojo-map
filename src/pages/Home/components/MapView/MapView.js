@@ -23,7 +23,7 @@ import Marker from '../Marker';
 type PropsType = {
   children: any,
   style?: any,
-  storyObjects: StoryType[],
+  storyObjects: StoryObjectType[],
   renderMarker: Function,
   setRef: Function,
 };

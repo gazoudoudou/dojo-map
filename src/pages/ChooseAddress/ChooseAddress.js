@@ -13,7 +13,7 @@ import theme from '../../theme';
 type PropsType = {} & NavigationScreenProps;
 
 type StateType = {
-  foundAddresses: {
+  addressObjects: {
     address: string,
     location: { latitude: number, longitude: number },
   }[],
@@ -25,7 +25,7 @@ const SEARCH_TEXT_LENGTH_THRESHOLD = 3;
 
 class ChooseAddress extends PureComponent<PropsType, StateType> {
   state = {
-    foundAddresses: [],
+    addressObjects: [],
     isLoading: false,
     searchText: '',
   };
@@ -33,7 +33,7 @@ class ChooseAddress extends PureComponent<PropsType, StateType> {
   _findAddressesFromSearch = (searchText: string) => {
     this.setState({ isLoading: true }, () => {
       findAddressesFromSearch(searchText)
-        .then(foundAddresses => this.setState({ foundAddresses }))
+        .then(addressObjects => this.setState({ addressObjects }))
         .catch(console.warn)
         .finally(() => this.setState({ isLoading: false }));
     });
@@ -52,7 +52,7 @@ class ChooseAddress extends PureComponent<PropsType, StateType> {
     item.address;
 
   _renderAddressLine = ({
-    item: foundAddress,
+    item: addressObject,
     index,
   }: {
     item: {
@@ -60,7 +60,7 @@ class ChooseAddress extends PureComponent<PropsType, StateType> {
       location: { latitude: number, longitude: number },
     },
     index: number,
-  }): any => <AddressLine foundAddress={foundAddress} />;
+  }): any => <AddressLine addressObject={addressObject} />;
 
   _renderEmptyAddressesList = () =>
     this.state.searchText.length >= SEARCH_TEXT_LENGTH_THRESHOLD ? (
@@ -68,7 +68,7 @@ class ChooseAddress extends PureComponent<PropsType, StateType> {
     ) : null;
 
   render() {
-    const shouldShowLoader = this.state.isLoading && (!this.state.foundAddresses || !this.state.foundAddresses.length);
+    const shouldShowLoader = this.state.isLoading && (!this.state.addressObjects || !this.state.addressObjects.length);
     return (
       <View style={styles.container}>
         <TextInput
@@ -83,11 +83,11 @@ class ChooseAddress extends PureComponent<PropsType, StateType> {
           ) : (
             <FlatList
               showsVerticalScrollIndicator={false}
-              data={this.state.foundAddresses}
+              data={this.state.addressObjects}
               renderItem={this._renderAddressLine}
               keyExtractor={this._keyExtractor}
               contentContainerStyle={
-                (!this.state.foundAddresses || !this.state.foundAddresses.length) && styles.emptyContentContainer
+                (!this.state.addressObjects || !this.state.addressObjects.length) && styles.emptyContentContainer
               }
               ListEmptyComponent={this._renderEmptyAddressesList}
             />

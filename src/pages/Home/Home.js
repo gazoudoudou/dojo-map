@@ -79,7 +79,7 @@ class Home extends PureComponent<PropsType> {
 
   _onGoToMyLocationPress = () => this._goToUserLocation(true);
 
-  _renderMarker = (storyObject: StoryType, showNickname?: ?boolean) => (
+  _renderMarker = (storyObject: StoryObjectType, showNickname?: ?boolean) => (
     <Marker key={storyObject.id} storyObject={storyObject} onPress={() => {}} showNickname={showNickname} />
   );
 

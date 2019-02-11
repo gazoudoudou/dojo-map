@@ -5,7 +5,7 @@ export const ZOOM_THRESHOLD_TO_NICKNAME = 17;
 export const MIN_ZOOM_TO_ADD_ON_CLUSTER_PRESS = 1;
 
 export const convertToGeoJSON = (
-  storyObjects: StoryType[] = []
+  storyObjects: StoryObjectType[] = []
 ): {
   properties: {
     id: string,

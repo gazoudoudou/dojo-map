@@ -1,6 +1,6 @@
 // @flow
 
-export type StoryType = {
+export type StoryObjectType = {
   id: string,
   location: {
     latitude: number,
