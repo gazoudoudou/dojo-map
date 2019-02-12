@@ -3,7 +3,7 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, View, InteractionManager } from 'react-native';
 import { NavigationScreenProps, withNavigationFocus } from 'react-navigation';
-import { GoToMyLocationButton, AddStoryButton, MapView, Marker } from './components';
+import { GoToMyLocationButton, AddStoryButton, MapView, StoryModal } from './components';
 import theme from '../../theme';
 import { checkPermissionAndGetCurrentLocation, positionToRegion, defaultRegion } from '../../lib/geolocation';
 
@@ -11,11 +11,16 @@ type PropsType = {
   isFocused: boolean,
 } & NavigationScreenProps;
 
+type StateType = {
+  selectedStoryObject: ?StoryObjectType,
+};
+
 const storyObjects = [
   {
     id: '1',
     nickname: 'Gazou',
-    story: 'coucou',
+    story:
+      'smdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkosmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:kjmsdf:k',
     location: {
       latitude: 48.882882,
       longitude: 2.322293,
@@ -50,9 +55,13 @@ const storyObjects = [
   },
 ];
 
-class Home extends PureComponent<PropsType> {
+class Home extends PureComponent<PropsType, StateType> {
   map: any = null;
   hasInitializedToInitialLocation: boolean = false;
+
+  state = {
+    selectedStoryObject: null,
+  };
 
   componentDidMount() {
     InteractionManager.runAfterInteractions(() => {
@@ -79,9 +88,9 @@ class Home extends PureComponent<PropsType> {
 
   _onGoToMyLocationPress = () => this._goToUserLocation(true);
 
-  _renderMarker = (storyObject: StoryObjectType, showNickname?: ?boolean) => (
-    <Marker key={storyObject.id} storyObject={storyObject} onPress={() => {}} showNickname={showNickname} />
-  );
+  _onStoryModalClose = () => this.setState({ selectedStoryObject: null });
+
+  _onStoryMarkerPress = (selectedStoryObject: StoryObjectType) => this.setState({ selectedStoryObject });
 
   render() {
     return (
@@ -89,11 +98,18 @@ class Home extends PureComponent<PropsType> {
         <MapView
           setRef={ref => (this.map = ref)}
           style={styles.map}
-          renderMarker={this._renderMarker}
           storyObjects={storyObjects}
+          onStoryMarkerPress={this._onStoryMarkerPress}
         />
         <GoToMyLocationButton style={styles.goToMyLocationButton} onPress={this._onGoToMyLocationPress} />
         <AddStoryButton style={styles.addStoryButton} />
+        {!!this.state.selectedStoryObject && (
+          <StoryModal
+            visible={!!this.state.selectedStoryObject}
+            storyObject={this.state.selectedStoryObject}
+            onClose={this._onStoryModalClose}
+          />
+        )}
       </View>
     );
   }

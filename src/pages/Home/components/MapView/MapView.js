@@ -24,8 +24,8 @@ type PropsType = {
   children: any,
   style?: any,
   storyObjects: StoryObjectType[],
-  renderMarker: Function,
   setRef: Function,
+  onStoryMarkerPress: Function,
 };
 
 type StateType = {
@@ -87,17 +87,14 @@ class MapView extends PureComponent<PropsType, StateType> {
   _renderMarker = cluster => {
     if (cluster.properties.cluster) return this._renderCluster(cluster);
     const storyObject = convertToStoryObject(cluster);
-    if (this.props.renderMarker) {
-      const showNickname =
-        Platform.OS === 'ios' &&
-        this.state.region &&
-        getZoomFromRegion(this.state.region) >= ZOOM_THRESHOLD_TO_NICKNAME;
-      return this.props.renderMarker(storyObject, showNickname);
-    }
+    const showNickname =
+      Platform.OS === 'ios' && this.state.region && getZoomFromRegion(this.state.region) >= ZOOM_THRESHOLD_TO_NICKNAME;
     return (
       <Marker
         key={storyObject.id}
-        coordinate={{ longitude: storyObject.location.longitude, latitude: storyObject.location.latitude }}
+        storyObject={storyObject}
+        onPress={this.props.onStoryMarkerPress}
+        showNickname={showNickname}
       />
     );
   };
