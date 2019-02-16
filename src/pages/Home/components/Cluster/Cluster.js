@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZE / 2,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(59, 49, 118, 0.25)',
+    backgroundColor: 'rgba(240, 36, 90,0.25)',
   },
   cluster: {
     width: SIZE - OUTERSKIRT,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     borderRadius: (SIZE - OUTERSKIRT) / 2,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgb(59, 49, 118)',
+    backgroundColor: 'rgb(240, 36, 90)',
   },
   clusterText: {
     fontSize: 12,

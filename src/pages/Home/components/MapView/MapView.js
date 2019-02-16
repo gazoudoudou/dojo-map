@@ -19,6 +19,7 @@ import {
 } from './lib';
 import Cluster from '../Cluster';
 import Marker from '../Marker';
+import { googleMapsCustomMapStyle } from '../../../../config';
 
 type PropsType = {
   children: any,
@@ -138,6 +139,7 @@ class MapView extends PureComponent<PropsType, StateType> {
         style={[styles.container, style]}
         showsUserLocation={isFocused}
         onRegionChangeComplete={this._onRegionChangeCompleteThrottle}
+        customMapStyle={googleMapsCustomMapStyle}
       >
         {this.state.clusters.map(cluster => this._renderMarker(cluster))}
       </RNMapView>

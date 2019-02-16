@@ -4,19 +4,19 @@ import React, { PureComponent } from 'react';
 import { StyleSheet } from 'react-native';
 import { TouchableOpacity, Icon } from '../../../../components';
 
-import theme from '../../../../theme';
-
 type PropsType = {
-  onPress: Function,
   style?: any,
+  onPress: Function,
+  iconColor: string,
+  iconName: string,
 };
 
-class GoToMyLocationButton extends PureComponent<PropsType> {
+class MapButton extends PureComponent<PropsType> {
   render() {
-    const { onPress, style } = this.props;
+    const { style, onPress, iconColor, iconName } = this.props;
     return (
       <TouchableOpacity activeOpacity={0.7} onPress={onPress} style={[styles.container, style]}>
-        <Icon name="my-location" color={theme.colors.lightGrey} size={20} />
+        <Icon name={iconName} color={iconColor} size={20} />
       </TouchableOpacity>
     );
   }
@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: theme.colors.white,
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 4,
@@ -41,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GoToMyLocationButton;
+export default MapButton;

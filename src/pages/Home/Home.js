@@ -3,7 +3,7 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, View, InteractionManager } from 'react-native';
 import { NavigationScreenProps, withNavigationFocus } from 'react-navigation';
-import { GoToMyLocationButton, AddStoryButton, MapView, StoryModal } from './components';
+import { MapButton, MapView, StoryModal } from './components';
 import theme from '../../theme';
 import { checkPermissionAndGetCurrentLocation, positionToRegion, defaultRegion } from '../../lib/geolocation';
 
@@ -86,6 +86,8 @@ class Home extends PureComponent<PropsType, StateType> {
         return new Promise(resolve => setTimeout(resolve, 2000)); // eslint-disable-line promise/avoid-new
       });
 
+  _onAddStoryButtonPress = () => this.props.navigation.navigate('ChooseAddress');
+
   _onGoToMyLocationPress = () => this._goToUserLocation(true);
 
   _onStoryModalClose = () => this.setState({ selectedStoryObject: null });
@@ -101,8 +103,18 @@ class Home extends PureComponent<PropsType, StateType> {
           storyObjects={storyObjects}
           onStoryMarkerPress={this._onStoryMarkerPress}
         />
-        <GoToMyLocationButton style={styles.goToMyLocationButton} onPress={this._onGoToMyLocationPress} />
-        <AddStoryButton style={styles.addStoryButton} />
+        <MapButton
+          style={styles.goToMyLocationButton}
+          onPress={this._onGoToMyLocationPress}
+          iconColor={theme.colors.lightGrey}
+          iconName="my-location"
+        />
+        <MapButton
+          style={styles.addStoryButton}
+          onPress={this._onAddStoryButtonPress}
+          iconColor={theme.colors.white}
+          iconName="plus"
+        />
         {!!this.state.selectedStoryObject && (
           <StoryModal
             visible={!!this.state.selectedStoryObject}
@@ -127,12 +139,14 @@ const styles = StyleSheet.create({
     bottom: theme.margin * 2,
     right: 0,
     marginRight: theme.margin * 2,
+    backgroundColor: theme.colors.white,
   },
   addStoryButton: {
     position: 'absolute',
     bottom: theme.margin * 2,
     left: 0,
     marginLeft: theme.margin * 2,
+    backgroundColor: theme.colors.blueberry,
   },
 });
 
