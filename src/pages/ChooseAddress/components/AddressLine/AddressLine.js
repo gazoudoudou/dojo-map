@@ -5,6 +5,7 @@ import { StyleSheet } from 'react-native';
 import { NavigationScreenProps, withNavigation } from 'react-navigation';
 import theme from '../../../../theme';
 import { TouchableOpacity, Text } from '../../../../components';
+import I18n from '../../../../lib/I18n';
 
 type PropsType = {
   addressObject: {
@@ -14,7 +15,12 @@ type PropsType = {
 } & NavigationScreenProps;
 
 class AddressLine extends PureComponent<PropsType> {
-  _onPress = () => this.props.navigation.navigate('WriteStory', { location: this.props.addressObject.location });
+  _onPress = () =>
+    this.props.navigation.navigate('WriteStory', {
+      location: this.props.addressObject.location,
+      placeholder: I18n.t('WriteStory.Nickname.placeholder'),
+      iconName: 'user1',
+    });
 
   render() {
     return (

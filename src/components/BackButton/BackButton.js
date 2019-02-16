@@ -18,7 +18,7 @@ class BackButton extends PureComponent<PropsType> {
         activeOpacity={0.7}
         hitSlop={{ top: 15, bottom: 15, left: 10, right: 10 }}
       >
-        <Icon name="chevron-left" size={14} style={styles.backIcon} />
+        <Icon name="chevron-left" size={16} style={styles.backIcon} color={theme.colors.white} />
       </TouchableOpacity>
     );
   }
@@ -27,7 +27,6 @@ class BackButton extends PureComponent<PropsType> {
 const styles = StyleSheet.create({
   backIcon: {
     padding: 2 * theme.margin,
-    color: theme.colors.blueberry,
   },
 });
 

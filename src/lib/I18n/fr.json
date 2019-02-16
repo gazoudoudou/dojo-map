@@ -5,9 +5,10 @@
     "error": "Une erreur est survenue"
   },
   "WriteStory": {
-    "nickname": "Choisir un pseudo",
-    "write_story": "Ecrire une histoire",
-    "submit": "Soumettre"
+    "write_story": "Ecrivez votre anecdote ici !",
+    "Nickname": {
+      "placeholder": "Votre surnom"
+    }
   },
   "Home": {
     "ok": "OK",

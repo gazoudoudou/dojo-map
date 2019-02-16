@@ -3,7 +3,7 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { StackActions, NavigationActions, NavigationScreenProps } from 'react-navigation';
-import { TextInput, TouchableOpacity, Text } from '../../components';
+import { TextInput } from '../../components';
 import I18n from '../../lib/I18n';
 import theme from '../../theme';
 
@@ -20,11 +20,29 @@ class WriteStory extends PureComponent<PropsType, StateType> {
     story: '',
   };
 
-  _onChangeNickname = (nickname: string) => this.setState({ nickname });
+  componentDidMount() {
+    return this.props.navigation.setParams({
+      onChangeText: this._onChangeNickname,
+      onSubmit: this._submitStory,
+    });
+  }
 
-  _onChangeStory = (story: string) => this.setState({ story });
+  _updateNavParams = () =>
+    this.props.navigation.setParams({
+      onSubmit: () => this._submitStory(this.state.nickname, this.state.story),
+      canSubmit: this._canSubmit(),
+    });
 
-  _submitStory = () => {
+  _canSubmit = () => {
+    const { nickname, story } = this.state;
+    return nickname && story && !!nickname.length && !!story.length;
+  };
+
+  _onChangeNickname = (nickname: string) => this.setState({ nickname }, this._updateNavParams);
+
+  _onChangeStory = (story: string) => this.setState({ story }, this._updateNavParams);
+
+  _submitStory = (nickname: string, story: string) => {
     const resetAction = StackActions.reset({
       index: 0,
       actions: [
@@ -40,21 +58,14 @@ class WriteStory extends PureComponent<PropsType, StateType> {
     return (
       <View style={styles.container}>
         <TextInput
-          placeholder={I18n.t('WriteStory.nickname')}
-          onChangeText={this._onChangeNickname}
-          value={this.state.nickname}
-          containerStyle={styles.nicknameContainer}
-        />
-        <TextInput
           placeholder={I18n.t('WriteStory.write_story')}
+          placeholderTextColor={theme.colors.lightGrey}
           onChangeText={this._onChangeStory}
           value={this.state.story}
           containerStyle={styles.storyContainer}
           multiline
+          style={styles.story}
         />
-        <TouchableOpacity onPress={this._submitStory}>
-          <Text>{I18n.t('WriteStory.submit')}</Text>
-        </TouchableOpacity>
       </View>
     );
   }
@@ -63,12 +74,15 @@ class WriteStory extends PureComponent<PropsType, StateType> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  nicknameContainer: {
-    marginBottom: 3 * theme.margin,
+    backgroundColor: theme.colors.white,
   },
   storyContainer: {
-    minHeight: 10 * theme.margin,
+    paddingTop: 3 * theme.margin,
+    marginHorizontal: 2 * theme.margin,
+    paddingBottom: 2 * theme.margin,
+  },
+  story: {
+    color: theme.colors.blueberry,
   },
 });
 
