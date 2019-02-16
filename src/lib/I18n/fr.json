@@ -2,7 +2,10 @@
   "ChooseAddress": {
     "search_input_placeholder": "Rechercher une adresse",
     "no_result_found": "Aucun résultat trouvé",
-    "error": "Une erreur est survenue"
+    "error": "Une erreur est survenue",
+    "AddressInput": {
+      "placeholder": "Entrez une adresse"
+    }
   },
   "WriteStory": {
     "write_story": "Ecrivez votre anecdote ici !",

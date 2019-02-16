@@ -5,6 +5,7 @@ import { StyleSheet, View, InteractionManager } from 'react-native';
 import { NavigationScreenProps, withNavigationFocus } from 'react-navigation';
 import { MapButton, MapView, StoryModal } from './components';
 import theme from '../../theme';
+import I18n from '../../lib/I18n';
 import { checkPermissionAndGetCurrentLocation, positionToRegion, defaultRegion } from '../../lib/geolocation';
 
 type PropsType = {
@@ -86,7 +87,11 @@ class Home extends PureComponent<PropsType, StateType> {
         return new Promise(resolve => setTimeout(resolve, 2000)); // eslint-disable-line promise/avoid-new
       });
 
-  _onAddStoryButtonPress = () => this.props.navigation.navigate('ChooseAddress');
+  _onAddStoryButtonPress = () =>
+    this.props.navigation.navigate('ChooseAddress', {
+      placeholder: I18n.t('ChooseAddress.AddressInput.placeholder'),
+      iconName: 'search',
+    });
 
   _onGoToMyLocationPress = () => this._goToUserLocation(true);
 
