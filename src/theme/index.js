@@ -30,6 +30,16 @@ const colors = {
 export default {
   colors,
   margin: 8,
+  typo: {
+    title: {
+      fontSize: 18,
+      lineHeight: 27,
+    },
+    body: {
+      fontSize: 14,
+      lineHeight: 21,
+    },
+  },
   errorToast: {
     text: colors.darkGrey,
     background: colors.lightOrange,

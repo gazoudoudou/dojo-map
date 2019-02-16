@@ -1,9 +1,19 @@
 // @flow
 
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Dimensions, Modal, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Modal,
+  TouchableWithoutFeedback,
+  ScrollView,
+  StatusBar,
+  Platform,
+} from 'react-native';
 import theme from '../../../../theme';
 import { TouchableOpacity, Icon, Text } from '../../../../components';
+import { Nickname } from './components';
 
 type PropsType = {
   onClose: Function,
@@ -21,13 +31,13 @@ export default class StoryModal extends PureComponent<PropsType> {
           <View style={styles.modalBackground} />
         </TouchableWithoutFeedback>
         <View style={[styles.container, style]}>
-          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-            <Icon name="cross" color={theme.colors.deepGrey} size={12} />
-          </TouchableOpacity>
-          <Text style={styles.nickname}>{storyObject.nickname}</Text>
+          <Nickname nickname={storyObject.nickname} style={styles.nickname} />
           <ScrollView style={styles.storyContainer} showsVerticalScrollIndicator={false}>
-            <Text>{storyObject.story}</Text>
+            <Text style={styles.story}>{storyObject.story}</Text>
           </ScrollView>
+          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+            <Icon name="cross" color={theme.colors.white} size={12} />
+          </TouchableOpacity>
         </View>
       </Modal>
     );
@@ -35,17 +45,17 @@ export default class StoryModal extends PureComponent<PropsType> {
 }
 
 const MARGIN_HORIZONTAL = 3 * theme.margin;
-const MARGIN_VERTICAL = 4 * theme.margin;
+const MARGIN_VERTICAL = 6 * theme.margin;
+const BORDER_RADIUS = 5;
 
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    top: MARGIN_VERTICAL,
+    top: Platform.OS === 'ios' ? MARGIN_VERTICAL : MARGIN_VERTICAL - StatusBar.currentHeight / 2,
     left: MARGIN_HORIZONTAL,
-    height: Dimensions.get('window').height - 2 * MARGIN_VERTICAL,
-    width: Dimensions.get('window').width - 2 * MARGIN_HORIZONTAL,
-    borderRadius: 5,
-    padding: 2 * theme.margin,
+    height: Dimensions.get('screen').height - 2 * MARGIN_VERTICAL,
+    width: Dimensions.get('screen').width - 2 * MARGIN_HORIZONTAL,
+    borderRadius: BORDER_RADIUS,
     backgroundColor: theme.colors.white,
   },
   modalBackground: {
@@ -61,11 +71,20 @@ const styles = StyleSheet.create({
     padding: 2 * theme.margin,
   },
   nickname: {
-    marginTop: 4 * theme.margin,
-    marginBottom: 3 * theme.margin,
+    paddingTop: 4 * theme.margin,
+    paddingBottom: 2 * theme.margin,
+    paddingHorizontal: 2 * theme.margin,
+    backgroundColor: theme.colors.blueberry,
+    borderTopLeftRadius: BORDER_RADIUS,
+    borderTopRightRadius: BORDER_RADIUS,
   },
   storyContainer: {
     flex: 1,
     overflow: 'hidden',
+    padding: 2 * theme.margin,
+  },
+  story: {
+    ...theme.typo.body,
+    color: theme.colors.deepGrey,
   },
 });
