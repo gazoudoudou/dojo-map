@@ -10,6 +10,7 @@
     "@bam.tech/react-native-component-text": "^1.0.2",
     "@bam.tech/react-native-component-text-input": "^1.0.3",
     "@bam.tech/react-native-snackbar-dialog": "^2.0.4",
+    "firebase": "^5.8.3",
     "lodash": "^4.17.11",
     "react": "16.6.3",
     "react-native": "0.58.4",
