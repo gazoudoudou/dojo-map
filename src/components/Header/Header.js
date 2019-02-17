@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
+import { NavigationScreenProps, withNavigation } from 'react-navigation';
 import Icon from '../Icon';
 import Separator from '../Separator';
 import TextInput from '../TextInput';
@@ -15,7 +16,7 @@ type PropsType = {
   placeholder: string,
   onSubmit?: Function,
   canSubmit?: boolean,
-};
+} & NavigationScreenProps;
 
 type StateType = {
   inputText: string,
@@ -25,6 +26,12 @@ class Header extends PureComponent<PropsType, StateType> {
   state = {
     inputText: '',
   };
+
+  componentDidUpdate(prevProps: PropsType) {
+    if (this.props.navigation.state.routeName !== prevProps.navigation.state.routeName) {
+      this._onChangeText('');
+    }
+  }
 
   _onChangeText = (inputText: string) => {
     this.props.onChangeText && this.props.onChangeText(inputText);
@@ -62,7 +69,8 @@ class Header extends PureComponent<PropsType, StateType> {
           <View style={styles.inputContainer}>
             <Icon name={iconName} size={20} color={theme.colors.primary} />
             <TextInput
-              style={styles.input}
+              containerStyle={this.state.inputText && this.state.inputText.length && styles.inputWithSearchText}
+              style={styles.textInput}
               numberOfLines={1}
               value={this.state.inputText}
               onChangeText={this._onChangeText}
@@ -85,11 +93,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 2 * theme.margin,
     marginTop: theme.margin,
   },
-  input: {
+  textInput: {
     ...theme.typo.title,
     marginLeft: theme.margin,
     marginRight: theme.margin,
     color: theme.colors.white,
+  },
+  inputWithSearchText: {
+    marginTop: -theme.margin / 2,
+    marginBottom: theme.margin / 2,
   },
   container: {
     backgroundColor: theme.colors.blueberry,
@@ -109,4 +121,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Header;
+export default withNavigation(Header);

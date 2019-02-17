@@ -12,6 +12,7 @@ type PropsType = {
     address: string,
     location: { latitude: number, longitude: number },
   },
+  style?: any,
 } & NavigationScreenProps;
 
 class AddressLine extends PureComponent<PropsType> {
@@ -24,16 +25,17 @@ class AddressLine extends PureComponent<PropsType> {
 
   render() {
     return (
-      <TouchableOpacity onPress={this._onPress} style={styles.container}>
-        <Text>{this.props.addressObject.address}</Text>
+      <TouchableOpacity onPress={this._onPress} style={this.props.style}>
+        <Text style={styles.address}>{this.props.addressObject.address}</Text>
       </TouchableOpacity>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    height: 3 * theme.margin,
+  address: {
+    ...theme.typo.title,
+    color: theme.colors.blueberry,
   },
 });
 
