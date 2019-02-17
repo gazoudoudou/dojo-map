@@ -14,11 +14,7 @@ class BackButton extends PureComponent<PropsType> {
 
   render() {
     return (
-      <TouchableOpacity
-        onPress={this._onPress}
-        activeOpacity={0.7}
-        hitSlop={{ top: 15, bottom: 15, left: 10, right: 10 }}
-      >
+      <TouchableOpacity onPress={this._onPress} hitSlop={{ top: 15, bottom: 15, left: 10, right: 10 }}>
         <Icon name="chevron-left" size={16} style={styles.backIcon} color={theme.colors.white} />
       </TouchableOpacity>
     );

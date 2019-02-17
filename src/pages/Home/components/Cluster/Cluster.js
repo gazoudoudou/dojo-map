@@ -23,7 +23,7 @@ type PropsType = {
 
 export default class Cluster extends PureComponent<PropsType> {
   render() {
-    const { color, cluster } = this.props;
+    const { color, cluster, onPress } = this.props;
     const { point_count, cluster_id } = cluster.properties;
     const coordinates = cluster.geometry.coordinates;
 
@@ -34,7 +34,7 @@ export default class Cluster extends PureComponent<PropsType> {
         width={SIZE}
         height={SIZE}
         anchor={{ x: 0.5, y: 0.5 }}
-        onPress={this.props.onPress}
+        onPress={onPress}
       >
         <View style={[styles.clusterOuter, color && { backgroundColor: `rgba(${color}, 0.25)` }]}>
           <View style={[styles.cluster, color && { backgroundColor: `rgb(${color})` }]}>

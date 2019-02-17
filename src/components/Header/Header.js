@@ -40,7 +40,7 @@ class Header extends PureComponent<PropsType, StateType> {
 
   _onSubmit = () => {
     const { onSubmit, canSubmit } = this.props;
-    return canSubmit ? onSubmit() : null;
+    return canSubmit ? onSubmit && onSubmit() : null;
   };
 
   render() {
@@ -52,11 +52,7 @@ class Header extends PureComponent<PropsType, StateType> {
           <View style={styles.headerTop}>
             <BackButton />
             {onSubmit && (
-              <TouchableOpacity
-                onPress={this._onSubmit}
-                activeOpacity={0.7}
-                hitSlop={{ top: 15, bottom: 15, left: 10, right: 10 }}
-              >
+              <TouchableOpacity onPress={this._onSubmit} hitSlop={{ top: 15, bottom: 15, left: 10, right: 10 }}>
                 <Icon
                   name="check"
                   size={16}

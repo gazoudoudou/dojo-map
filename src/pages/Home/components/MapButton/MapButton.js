@@ -15,7 +15,7 @@ class MapButton extends PureComponent<PropsType> {
   render() {
     const { style, onPress, iconColor, iconName } = this.props;
     return (
-      <TouchableOpacity activeOpacity={0.7} onPress={onPress} style={[styles.container, style]}>
+      <TouchableOpacity onPress={onPress} style={[styles.container, style]}>
         <Icon name={iconName} color={iconColor} size={20} />
       </TouchableOpacity>
     );
