@@ -2,7 +2,6 @@
 
 import React, { PureComponent } from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
-import { withNavigation, NavigationScreenProps } from 'react-navigation';
 import Icon from '../Icon';
 import Separator from '../Separator';
 import TextInput from '../TextInput';
@@ -16,7 +15,7 @@ type PropsType = {
   placeholder: string,
   onSubmit?: Function,
   canSubmit?: boolean,
-} & NavigationScreenProps;
+};
 
 type StateType = {
   inputText: string,
@@ -32,8 +31,6 @@ class Header extends PureComponent<PropsType, StateType> {
     return this.setState({ inputText });
   };
 
-  _onBackButtonPress = () => this.props.navigation.goBack();
-
   _onSubmit = () => {
     const { onSubmit, canSubmit } = this.props;
     return canSubmit ? onSubmit() : null;
@@ -46,7 +43,7 @@ class Header extends PureComponent<PropsType, StateType> {
         <StatusBar backgroundColor={theme.colors.blueberry} />
         <View style={styles.container}>
           <View style={styles.headerTop}>
-            <BackButton onPress={this._onBackButtonPress} />
+            <BackButton />
             {onSubmit && (
               <TouchableOpacity
                 onPress={this._onSubmit}
@@ -112,4 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withNavigation(Header);
+export default Header;

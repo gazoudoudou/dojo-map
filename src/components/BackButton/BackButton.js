@@ -2,19 +2,20 @@
 
 import React, { PureComponent } from 'react';
 import { StyleSheet } from 'react-native';
+import { withNavigation, NavigationScreenProps } from 'react-navigation';
 import TouchableOpacity from '../TouchableOpacity';
 import Icon from '../Icon';
 import theme from '../../theme';
 
-type PropsType = {
-  onPress: Function,
-};
+type PropsType = {} & NavigationScreenProps;
 
 class BackButton extends PureComponent<PropsType> {
+  _onPress = () => this.props.navigation.goBack();
+
   render() {
     return (
       <TouchableOpacity
-        onPress={this.props.onPress}
+        onPress={this._onPress}
         activeOpacity={0.7}
         hitSlop={{ top: 15, bottom: 15, left: 10, right: 10 }}
       >
@@ -30,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BackButton;
+export default withNavigation(BackButton);
