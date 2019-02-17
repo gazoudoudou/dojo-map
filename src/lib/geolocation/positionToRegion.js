@@ -1,6 +1,6 @@
 // @flow
 
-export const positionToRegion = (position: { coords: { latitude: number, longitude: number } }): RegionType => ({
+export const positionToRegion = (position: { coords: { latitude: number, longitude: number } }) => ({
   latitude: position.coords.latitude,
   longitude: position.coords.longitude,
   latitudeDelta: 0.003,

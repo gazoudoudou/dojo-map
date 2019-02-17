@@ -67,7 +67,14 @@ class Home extends PureComponent<PropsType, StateType> {
   componentDidMount() {
     InteractionManager.runAfterInteractions(() => {
       if (!this.hasInitializedToInitialLocation && this.props.isFocused) {
-        this._goToUserLocation();
+        const initialLocation = this.props.navigation.getParam('initialLocation');
+        if (initialLocation) {
+          this.map && this.map.animateToRegion(positionToRegion({ coords: initialLocation }));
+          this.hasInitializedToInitialLocation = true;
+          this.props.navigation.setParams({ initialLocation: null });
+        } else {
+          this._goToUserLocation();
+        }
       }
     });
   }
@@ -79,7 +86,7 @@ class Home extends PureComponent<PropsType, StateType> {
         console.warn(e);
         return defaultRegion;
       })
-      .then((initialRegion: RegionType) => {
+      .then(initialRegion => {
         this.map && this.map.animateToRegion(initialRegion);
         if (!this.hasInitializedToInitialLocation) {
           this.hasInitializedToInitialLocation = true;

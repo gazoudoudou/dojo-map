@@ -43,11 +43,15 @@ class WriteStory extends PureComponent<PropsType, StateType> {
   _onChangeStory = (story: string) => this.setState({ story }, this._updateNavParams);
 
   _submitStory = (nickname: string, story: string) => {
+    const initialLocation = this.props.navigation.getParam('location');
     const resetAction = StackActions.reset({
       index: 0,
       actions: [
         NavigationActions.navigate({
           routeName: 'Home',
+          params: {
+            initialLocation,
+          },
         }),
       ],
     });
