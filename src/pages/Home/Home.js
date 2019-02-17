@@ -5,6 +5,7 @@ import { StyleSheet, View, InteractionManager } from 'react-native';
 import { NavigationScreenProps, withNavigationFocus } from 'react-navigation';
 import { MapButton, MapView, StoryModal } from './components';
 import theme from '../../theme';
+import database from '../../lib/database';
 import I18n from '../../lib/I18n';
 import { checkPermissionAndGetCurrentLocation, positionToRegion, defaultRegion } from '../../lib/geolocation';
 
@@ -14,47 +15,8 @@ type PropsType = {
 
 type StateType = {
   selectedStoryObject: ?StoryObjectType,
+  stories: StoryObjectType[],
 };
-
-const storyObjects = [
-  {
-    id: '1',
-    nickname: 'Gazou',
-    story:
-      'smdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkosmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:ksmdfqsdlmf=kjqsD+Mlfkjqs=dlkfgjqs=dlkgjq=sdlgkjqs=dlgk:q=sdjg=lqskdgj=qlkdjg=qlskdgjqsld:kgjq=sldgkjq=sdlgkqjsgdlkojmsdf:kjmsdf:k',
-    location: {
-      latitude: 48.882882,
-      longitude: 2.322293,
-    },
-  },
-  {
-    id: '2',
-    nickname: 'Bob',
-    story: 'coucou',
-    location: {
-      latitude: 48.932882,
-      longitude: 2.322293,
-    },
-  },
-  {
-    id: '3',
-    nickname: 'Jacques',
-    story: 'coucou',
-    location: {
-      latitude: 48.882882,
-      longitude: 2.342293,
-    },
-  },
-  {
-    id: '4',
-    nickname: 'Martin',
-    story: 'Houhouhou !!!',
-    location: {
-      latitude: 48.892882,
-      longitude: 2.372293,
-    },
-  },
-];
 
 class Home extends PureComponent<PropsType, StateType> {
   map: any = null;
@@ -62,6 +24,7 @@ class Home extends PureComponent<PropsType, StateType> {
 
   state = {
     selectedStoryObject: null,
+    stories: [],
   };
 
   componentDidMount() {
@@ -77,7 +40,29 @@ class Home extends PureComponent<PropsType, StateType> {
         }
       }
     });
+
+    this.unsubscribeStoriesCollectionUpdate = database.collection('stories').onSnapshot(this.onStoriesCollectionUpdate);
   }
+
+  componentWillUnmount() {
+    this.unsubscribeStoriesCollectionUpdate();
+  }
+
+  onStoriesCollectionUpdate = querySnapshot => {
+    const stories = [];
+    querySnapshot.forEach(doc => {
+      const { nickname, story, location } = doc.data();
+      stories.push({
+        id: doc.id,
+        nickname,
+        story,
+        location,
+      });
+    });
+    this.setState({
+      stories,
+    });
+  };
 
   _goToUserLocation = (isFromUserInteraction?: boolean): Promise<void> =>
     checkPermissionAndGetCurrentLocation(isFromUserInteraction)
@@ -112,7 +97,7 @@ class Home extends PureComponent<PropsType, StateType> {
         <MapView
           setRef={ref => (this.map = ref)}
           style={styles.map}
-          storyObjects={storyObjects}
+          storyObjects={this.state.stories}
           onStoryMarkerPress={this._onStoryMarkerPress}
         />
         <MapButton
