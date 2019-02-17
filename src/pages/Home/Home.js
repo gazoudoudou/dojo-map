@@ -48,7 +48,7 @@ const storyObjects = [
   {
     id: '4',
     nickname: 'Martin',
-    story: 'coucou',
+    story: 'Houhouhou !!!',
     location: {
       latitude: 48.892882,
       longitude: 2.372293,

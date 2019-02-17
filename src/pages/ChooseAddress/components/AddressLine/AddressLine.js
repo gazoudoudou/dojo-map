@@ -26,7 +26,9 @@ class AddressLine extends PureComponent<PropsType> {
   render() {
     return (
       <TouchableOpacity onPress={this._onPress} style={this.props.style}>
-        <Text style={styles.address}>{this.props.addressObject.address}</Text>
+        <Text numberOfLines={1} style={styles.address}>
+          {this.props.addressObject.address}
+        </Text>
       </TouchableOpacity>
     );
   }

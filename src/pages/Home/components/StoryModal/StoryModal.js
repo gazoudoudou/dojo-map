@@ -86,5 +86,6 @@ const styles = StyleSheet.create({
   story: {
     ...theme.typo.body,
     color: theme.colors.deepGrey,
+    paddingBottom: 3 * theme.margin,
   },
 });

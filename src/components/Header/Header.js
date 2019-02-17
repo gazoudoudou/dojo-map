@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PureComponent } from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { View, StyleSheet, StatusBar, Platform } from 'react-native';
 import { NavigationScreenProps, withNavigation } from 'react-navigation';
 import Icon from '../Icon';
 import Separator from '../Separator';
@@ -69,7 +69,12 @@ class Header extends PureComponent<PropsType, StateType> {
           <View style={styles.inputContainer}>
             <Icon name={iconName} size={20} color={theme.colors.primary} />
             <TextInput
-              containerStyle={this.state.inputText && this.state.inputText.length && styles.inputWithSearchText}
+              containerStyle={
+                this.state.inputText &&
+                this.state.inputText.length &&
+                Platform.OS === 'ios' &&
+                styles.inputWithSearchText
+              }
               style={styles.textInput}
               numberOfLines={1}
               value={this.state.inputText}
